@@ -4,14 +4,17 @@ app = Flask(__name__)
 
 @app.route('/factorial/<int:num>')
 def calcular_factorial(num):
-    
+
     # Calcular factorial
     factorial = 1
     for i in range(1, num + 1):
         factorial *= i
 
     # Determinar si el factorial es par o impar
-    etiqueta = "par" if factorial % 2 == 0 else "impar"
+    if num % 2 == 0:
+        etiqueta = "par"
+    else:
+        etiqueta = "impar"
 
     # Construir respuesta JSON
     respuesta = {
